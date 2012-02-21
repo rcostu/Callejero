@@ -4,6 +4,8 @@
  */
 package callejero;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author roberto
