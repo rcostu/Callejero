@@ -49,7 +49,7 @@ public class Mapa extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
-        setPreferredSize(new java.awt.Dimension(1024, 768));
+        setPreferredSize(new java.awt.Dimension(800, 800));
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,9 +106,11 @@ public class Mapa extends javax.swing.JFrame {
                 
             }
         });
-        
-        mapa.addCruce(100,100,200,30);
-        mapa.addCruce(300,300,20,250);
+                
+        mapa.addCruce(0,200,800,50);
+        mapa.addCruce(0,500,800,50);
+        mapa.addCruce(300,0,50,800);
+        mapa.addCruce(600,0,50,800);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
