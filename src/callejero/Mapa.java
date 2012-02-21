@@ -6,6 +6,7 @@ package callejero;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,8 +21,18 @@ public class Mapa extends javax.swing.JFrame {
         initComponents();
     }
     
-    
+    private final ArrayList<Cruce> cruces = new ArrayList<Cruce>();
 
+    public void addCruce (int x1, int y1, int x2, int y2) {
+        this.cruces.add(new Cruce(x1, y1, x2, y2));
+    }
+    
+    public void paint(Graphics g) {
+        for (final Cruce c : cruces) {
+            c.paint(g);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
