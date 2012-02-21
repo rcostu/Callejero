@@ -4,18 +4,26 @@
  */
 package callejero;
 
-import java.awt.Canvas;
+
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
-import sun.tools.tree.ThisExpression;
 
 /**
  *
  * @author roberto
+ * @author cristian
+ * @author alvaro
+ * @author hui
+ * 
  */
 public class Mapa extends javax.swing.JFrame {
 
+    
+    private final ArrayList<Cruce> cruces = new ArrayList<Cruce>();
+    
     /**
      * Creates new form Mapa
      */
@@ -23,19 +31,20 @@ public class Mapa extends javax.swing.JFrame {
         initComponents();
     }
     
-    private static Mapa mapa = new Mapa();
-    
-    private final ArrayList<Cruce> cruces = new ArrayList<Cruce>();
-
-    public void addCruce (int x1, int y1, int width, int height) {
-        this.cruces.add(new Cruce(x1, y1, width, height));
+    public void addCruce ( Cruce c) {
+        this.cruces.add(c);
     }
     
+    @Override
     public void paint(Graphics g) {
+        g.setColor(Color.white);
+        Graphics2D g2 = (Graphics2D)g;
+        g2.setStroke(new BasicStroke(8));
+        
         for (final Cruce c : cruces) {
             c.paint(g);
+            c.drawCruce(g);
         }
-        System.out.println("PINTO");
     }
     
     /**
@@ -49,7 +58,7 @@ public class Mapa extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
-        setPreferredSize(new java.awt.Dimension(800, 800));
+        setPreferredSize(new java.awt.Dimension(400, 400));
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,48 +78,31 @@ public class Mapa extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /*
-         * Set the Nimbus look and feel
-         */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /*
-         * If Nimbus (introduced in Java SE 6) is not available, stay with the
-         * default look and feel. For details see
-         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Mapa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Mapa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Mapa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Mapa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /*
-         * Create and display the form
-         */
+        
+        final Mapa mapa = new Mapa();
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
                mapa.setVisible(true);
-                
             }
         });
-                
-        mapa.addCruce(0,200,800,50);
-        mapa.addCruce(0,500,800,50);
-        mapa.addCruce(300,0,50,800);
-        mapa.addCruce(600,0,50,800);
+        
+        Cruce c1 = new Cruce (20,40);
+        Cruce c2 = new Cruce (60,40);
+        Cruce c3 = new Cruce (20,80);
+        Cruce c4 = new Cruce (60,80);
+
+        mapa.addCruce(c1);
+        mapa.addCruce(c2);
+        mapa.addCruce(c3);
+        mapa.addCruce(c4);
+        
+        c1.addVecino(c2);
+        c1.addVecino(c3);
+        c2.addVecino(c4);
+        c3.addVecino(c4);
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

@@ -4,38 +4,77 @@
  */
 package callejero;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
  *
  * @author roberto
+ * @author cristian
+ * @author alvaro
+ * @author hui
+ * 
  */
 public class Cruce {
 
-    private int x1;
-    private int y1;
-    private int width;
-    private int height;
+    private int x;
+    private int y;
+
     
     private final ArrayList<Cruce> vecinos = new ArrayList<Cruce>();
     
-    public void addVecino(Cruce cruce) {
-        vecinos.add(cruce);
-    }
+    
+    /**
+     * 
+     * @param x
+     * @param y 
+     */
+    public Cruce (int x, int y){
+        
+        this.x = x;
+        this.y = y;
 
-    public Cruce (int x1, int y1, int width, int height){
-        this.x1 = x1;
-        this.y1 = y1;
-        this.width = width;
-        this.height = height;
     }
     
-    public void paint(Graphics g) {
-        g.setColor(Color.white);
-        g.drawRect(this.x1, this.y1, this.width, this.height);
-        g.fillRect(this.x1, this.y1, this.width, this.height);
+    /**
+     * 
+     * @param cruce 
+     */
+    public void addVecino(Cruce cruce) {
+        
+        vecinos.add(cruce);
+        
     }
+    
+    /**
+     * 
+     * @param g 
+     */
+    public void paint(Graphics g) {
+        
+        g.drawRect(x-3, y-3, 6, 6);
+        g.fillRect(this.x-3, this.y-3, 6, 6);
+        
+    }
+    
+    /**
+     * 
+     * @param g 
+     */
+    public void drawCruce(Graphics g){        
+        
+        for (Cruce c : this.vecinos){
+            g.drawLine(x, y, c.getX(), c.getY());
+        }
+        
+    }
+    
+    public int getX(){
+        return this.x;
+    }
+    
+    public int getY(){
+        return this.y;
+    }
+    
 }
