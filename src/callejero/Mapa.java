@@ -4,9 +4,11 @@
  */
 package callejero;
 
+import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import sun.tools.tree.ThisExpression;
 
 /**
  *
@@ -21,16 +23,19 @@ public class Mapa extends javax.swing.JFrame {
         initComponents();
     }
     
+    private static Mapa mapa = new Mapa();
+    
     private final ArrayList<Cruce> cruces = new ArrayList<Cruce>();
 
-    public void addCruce (int x1, int y1, int x2, int y2) {
-        this.cruces.add(new Cruce(x1, y1, x2, y2));
+    public void addCruce (int x1, int y1, int width, int height) {
+        this.cruces.add(new Cruce(x1, y1, width, height));
     }
     
     public void paint(Graphics g) {
         for (final Cruce c : cruces) {
             c.paint(g);
         }
+        System.out.println("PINTO");
     }
     
     /**
@@ -43,7 +48,8 @@ public class Mapa extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
+        setPreferredSize(new java.awt.Dimension(1024, 768));
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,10 +102,13 @@ public class Mapa extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new Mapa().setVisible(true);
+               mapa.setVisible(true);
                 
             }
         });
+        
+        mapa.addCruce(100,100,200,30);
+        mapa.addCruce(300,300,20,250);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
