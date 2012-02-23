@@ -103,6 +103,13 @@ public class Mapa extends javax.swing.JFrame {
         c2.addVecino(c4);
         c3.addVecino(c4);
         
+        
+        /*
+        ArrayList<Cruce> path = new Calculo().search(c1,c4);
+        
+        for(int i=0;i<path.size();i++)
+            System.out.print(path.get(i).toString());*/
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

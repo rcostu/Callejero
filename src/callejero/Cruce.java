@@ -23,6 +23,20 @@ public class Cruce {
     
     private final ArrayList<Cruce> vecinos = new ArrayList<Cruce>();
     
+    public boolean Equals(Cruce c){
+        return this.x == c.x && this.y == c.y;
+    }
+    
+    @Override
+    public String toString(){
+        StringBuilder result = new StringBuilder();
+        result.append("(");
+        result.append(x);
+        result.append(",");
+        result.append(y);
+        result.append(")");
+        return result.toString();
+    }
     
     /**
      * 
@@ -76,5 +90,9 @@ public class Cruce {
     public int getY(){
         return this.y;
     }
-    
+    public ArrayList<Cruce> getVecinos(){
+        return this.vecinos;
+    }
+
+
 }

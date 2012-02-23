@@ -3,3 +3,4 @@
 /build/
 *class
 *private.properties
+/dist/
