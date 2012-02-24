@@ -19,25 +19,10 @@ public class Cruce {
 
     private int x;
     private int y;
+    private final ArrayList<Cruce> neighbors = new ArrayList<Cruce>();
 
     
-    private final ArrayList<Cruce> vecinos = new ArrayList<Cruce>();
-    
-    public boolean Equals(Cruce c){
-        return this.x == c.x && this.y == c.y;
-    }
-    
-    @Override
-    public String toString(){
-        StringBuilder result = new StringBuilder();
-        result.append("(");
-        result.append(x);
-        result.append(",");
-        result.append(y);
-        result.append(")");
-        return result.toString();
-    }
-    
+
     /**
      * 
      * @param x
@@ -54,9 +39,9 @@ public class Cruce {
      * 
      * @param cruce 
      */
-    public void addVecino(Cruce cruce) {
+    public void addNeighbor(Cruce cruce) {
         
-        vecinos.add(cruce);
+        neighbors.add(cruce);
         
     }
     
@@ -77,18 +62,40 @@ public class Cruce {
      */
     public void drawCruce(Graphics g){        
         
-        for (Cruce c : this.vecinos){
+        for (Cruce c : this.neighbors){
             g.drawLine(x, y, c.getX(), c.getY());
         }
         
     }
     
     public void highlightCruce(Graphics g, Cruce b){
-        System.out.println(this);
-        System.out.println(b);
         
         g.drawLine(x, y, b.getX(), b.getY());
+        
     }
+    
+        
+    
+    public boolean Equals(Cruce c){
+        
+        return this.x == c.x && this.y == c.y;
+        
+    }
+    
+    
+    @Override
+    public String toString(){
+        
+        StringBuilder result = new StringBuilder();
+        result.append("(");
+        result.append(x);
+        result.append(",");
+        result.append(y);
+        result.append(")");
+        return result.toString();
+        
+    }
+    
     
     public int getX(){
         return this.x;
@@ -97,8 +104,9 @@ public class Cruce {
     public int getY(){
         return this.y;
     }
-    public ArrayList<Cruce> getVecinos(){
-        return this.vecinos;
+    
+    public ArrayList<Cruce> getNeighbors(){
+        return this.neighbors;
     }
 
 

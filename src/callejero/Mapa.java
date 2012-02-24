@@ -85,6 +85,7 @@ public class Mapa extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
 
+            @Override
             public void run() {
                 mapa.setVisible(true);
                
@@ -98,10 +99,10 @@ public class Mapa extends javax.swing.JFrame {
                 mapa.addCruce(c3);
                 mapa.addCruce(c4);
 
-                c1.addVecino(c2);
-                c1.addVecino(c3);
-                c2.addVecino(c4);
-                c3.addVecino(c4);
+                c1.addNeighbor(c2);
+                c1.addNeighbor(c3);
+                c2.addNeighbor(c4);
+                c3.addNeighbor(c4);
 
 
 

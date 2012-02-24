@@ -24,14 +24,14 @@ public class Calculo {
         
         
         explorados.add(inicio);
-        ArrayList<Cruce> vecinos = inicio.getVecinos();
+        ArrayList<Cruce> neighbors = inicio.getNeighbors();
         ArrayList<Cruce> tmp;
         
-        for(int i=0;i<vecinos.size() && !resultado.contains(fin);i++){
-            tmp = recursiveSearch(resultado, explorados, vecinos.get(i), fin);
-            explorados.add(vecinos.get(i));
+        for(int i=0;i<neighbors.size() && !resultado.contains(fin);i++){
+            tmp = recursiveSearch(resultado, explorados, neighbors.get(i), fin);
+            explorados.add(neighbors.get(i));
             if (tmp!=null)
-                resultado.add(0,vecinos.get(i));
+                resultado.add(0,neighbors.get(i));
             
         }
         
