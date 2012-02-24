@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.lang.Exception;
 
 /**
  *
@@ -25,8 +26,11 @@ public class Ruta extends javax.swing.JFrame {
         this.destination = destination;
     }
     
-    public void calcular(){
+    public void calcular() throws Exception {
         this.route =  new Calculo().search(origin, destination);
+        if (this.route == null) {
+            throw new Exception("Ruta no encontrada");
+        }
     }
     
     

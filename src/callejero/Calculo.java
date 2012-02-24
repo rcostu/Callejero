@@ -19,8 +19,10 @@ public class Calculo {
         if(explorados.contains(inicio))
             return null;
 
-        if(inicio.Equals(fin))
+        if(inicio.Equals(fin)) {
+            resultado.add(fin);
             return resultado;
+        }
         
         
         explorados.add(inicio);
@@ -29,8 +31,8 @@ public class Calculo {
         
         for(int i=0;i<neighbors.size() && !resultado.contains(fin);i++){
             tmp = recursiveSearch(neighbors.get(i), fin);
-            explorados.add(neighbors.get(i));
-            if (tmp!=null)
+            System.out.println(i+" "+tmp);
+            if (tmp!=null && tmp.contains(fin) && neighbors.get(i)!=fin)
                 resultado.add(0,neighbors.get(i));
             
         }
@@ -42,6 +44,10 @@ public class Calculo {
     public ArrayList<Cruce> search(Cruce inicio, Cruce fin){
         recursiveSearch(inicio, fin);
         resultado.add(0,inicio);
+        if (!resultado.contains(fin)) {
+            return null;
+        }
+        System.out.println(resultado);
         return resultado;
     }
     

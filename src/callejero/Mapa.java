@@ -5,11 +5,13 @@
 package callejero;
 
 
+import com.sun.tools.internal.xjc.api.J2SJAXBModel;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -69,7 +71,12 @@ public class Mapa extends javax.swing.JFrame {
         c4.addNeighbor(c3);
                 
         Ruta r = new Ruta(c2,c3);
-        r.calcular();
+        try {
+            r.calcular();
+        }
+        catch(Exception e){
+            return;
+        }
         r.draw(this);
     }
     
@@ -88,7 +95,63 @@ public class Mapa extends javax.swing.JFrame {
         }
         
         Ruta r = new Ruta(cruces.get(5),cruces.get(20));
-        r.calcular();
+        try {
+            r.calcular();
+        }
+        catch(Exception e){
+            return;
+        }
+        r.draw(this);
+    }
+    
+    public void test3() {
+        Cruce c1 = new Cruce (20,40);
+        Cruce c2 = new Cruce (60,40);
+        Cruce c3 = new Cruce (20,80);
+        Cruce c4 = new Cruce (60,80);
+        Cruce c5 = new Cruce (120,80);
+        Cruce c6 = new Cruce (250,140);
+        Cruce c7 = new Cruce (230,560);
+        Cruce c8 = new Cruce (500,28);
+        Cruce c9 = new Cruce (600,300);
+
+        this.addCruce(c1);
+        this.addCruce(c2);
+        this.addCruce(c3);
+        this.addCruce(c4);
+        this.addCruce(c5);
+        this.addCruce(c6);
+        this.addCruce(c7);
+        this.addCruce(c8);
+        this.addCruce(c9);
+
+        c1.addNeighbor(c2);
+        c2.addNeighbor(c1);
+        c1.addNeighbor(c3);
+        c3.addNeighbor(c1);
+        c2.addNeighbor(c4);
+        c4.addNeighbor(c2);
+        c3.addNeighbor(c4);
+        c4.addNeighbor(c3);
+        c5.addNeighbor(c6);
+        c6.addNeighbor(c5);
+        c4.addNeighbor(c5);
+        c5.addNeighbor(c4);
+        c6.addNeighbor(c7);
+        c7.addNeighbor(c6);
+        c6.addNeighbor(c8);
+        c8.addNeighbor(c6);
+        c5.addNeighbor(c8);
+        c8.addNeighbor(c5);
+                
+        Ruta r = new Ruta(c1,c7);
+        try {
+            r.calcular();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ruta no encontrada");
+            return;
+        }
         r.draw(this);
     }
 
@@ -132,8 +195,7 @@ public class Mapa extends javax.swing.JFrame {
             @Override
             public void run() {
                 mapa.setVisible(true);
-               
-                mapa.test1();
+                mapa.test3();
             }
         });
         
