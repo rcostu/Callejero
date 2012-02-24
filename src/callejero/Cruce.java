@@ -83,6 +83,13 @@ public class Cruce {
         
     }
     
+    public void highlightCruce(Graphics g, Cruce b){
+        System.out.println(this);
+        System.out.println(b);
+        
+        g.drawLine(x, y, b.getX(), b.getY());
+    }
+    
     public int getX(){
         return this.x;
     }

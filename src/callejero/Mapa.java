@@ -47,6 +47,8 @@ public class Mapa extends javax.swing.JFrame {
         }
     }
     
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -84,31 +86,33 @@ public class Mapa extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-               mapa.setVisible(true);
+                mapa.setVisible(true);
+               
+                Cruce c1 = new Cruce (20,40);
+                Cruce c2 = new Cruce (60,40);
+                Cruce c3 = new Cruce (20,80);
+                Cruce c4 = new Cruce (60,80);
+
+                mapa.addCruce(c1);
+                mapa.addCruce(c2);
+                mapa.addCruce(c3);
+                mapa.addCruce(c4);
+
+                c1.addVecino(c2);
+                c1.addVecino(c3);
+                c2.addVecino(c4);
+                c3.addVecino(c4);
+
+
+
+                Ruta r = new Ruta(c1,c4);
+                r.calcular();
+                r.draw(mapa);
+
             }
         });
         
-        Cruce c1 = new Cruce (20,40);
-        Cruce c2 = new Cruce (60,40);
-        Cruce c3 = new Cruce (20,80);
-        Cruce c4 = new Cruce (60,80);
-
-        mapa.addCruce(c1);
-        mapa.addCruce(c2);
-        mapa.addCruce(c3);
-        mapa.addCruce(c4);
         
-        c1.addVecino(c2);
-        c1.addVecino(c3);
-        c2.addVecino(c4);
-        c3.addVecino(c4);
-        
-        
-        /*
-        ArrayList<Cruce> path = new Calculo().search(c1,c4);
-        
-        for(int i=0;i<path.size();i++)
-            System.out.print(path.get(i).toString());*/
         
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
