@@ -24,6 +24,7 @@ public class Mapa extends javax.swing.JFrame {
     
     private final ArrayList<Cruce> cruces = new ArrayList<Cruce>();
     
+    
     /**
      * Creates new form Mapa
      */
@@ -47,6 +48,44 @@ public class Mapa extends javax.swing.JFrame {
         }
     }
     
+    public void test1() {
+        Cruce c1 = new Cruce (20,40);
+        Cruce c2 = new Cruce (60,40);
+        Cruce c3 = new Cruce (20,80);
+        Cruce c4 = new Cruce (60,80);
+
+        this.addCruce(c1);
+        this.addCruce(c2);
+        this.addCruce(c3);
+        this.addCruce(c4);
+
+        c1.addNeighbor(c2);
+        c1.addNeighbor(c3);
+        c2.addNeighbor(c4);
+        c3.addNeighbor(c4);
+                
+        Ruta r = new Ruta(c1,c4);
+        r.calcular();
+        r.draw(this);
+    }
+    
+    public void test2() {
+        Cruce c_prev = null;
+        for (int i = 20; i < 800; i += 40) {
+            for (int j = 30; j < 800; j += 40) {
+                Cruce c = new Cruce (i,j);
+                this.addCruce(c);
+                if (c_prev != null) {
+                    c.addNeighbor(c_prev);
+                }
+                c_prev = c;
+            }
+        }
+        
+        Ruta r = new Ruta(cruces.get(5),cruces.get(35));
+        r.calcular();
+        r.draw(this);
+    }
 
     
     /**
@@ -60,7 +99,7 @@ public class Mapa extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
-        setPreferredSize(new java.awt.Dimension(400, 400));
+        setPreferredSize(new java.awt.Dimension(800, 800));
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,27 +128,7 @@ public class Mapa extends javax.swing.JFrame {
             public void run() {
                 mapa.setVisible(true);
                
-                Cruce c1 = new Cruce (20,40);
-                Cruce c2 = new Cruce (60,40);
-                Cruce c3 = new Cruce (20,80);
-                Cruce c4 = new Cruce (60,80);
-
-                mapa.addCruce(c1);
-                mapa.addCruce(c2);
-                mapa.addCruce(c3);
-                mapa.addCruce(c4);
-
-                c1.addNeighbor(c2);
-                c1.addNeighbor(c3);
-                c2.addNeighbor(c4);
-                c3.addNeighbor(c4);
-
-
-
-                Ruta r = new Ruta(c1,c4);
-                r.calcular();
-                r.draw(mapa);
-
+                mapa.test2();
             }
         });
         
