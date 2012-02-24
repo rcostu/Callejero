@@ -19,6 +19,7 @@ public class Cruce {
 
     private int x;
     private int y;
+    private String name;
     private final ArrayList<Cruce> neighbors = new ArrayList<Cruce>();
 
     
@@ -28,10 +29,11 @@ public class Cruce {
      * @param x
      * @param y 
      */
-    public Cruce (int x, int y){
+    public Cruce (int x, int y, String name){
         
         this.x = x;
         this.y = y;
+        this.name = name;
 
     }
     
@@ -51,7 +53,7 @@ public class Cruce {
         
         g.drawRect(x-3, y-3, 6, 6);
         g.fillRect(this.x-3, this.y-3, 6, 6);
-        g.drawString(this.toString(), this.x, this.y);
+        g.drawString(this.name, this.x+5, this.y-8);
         
     }
     

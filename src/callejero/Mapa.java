@@ -5,7 +5,6 @@
 package callejero;
 
 
-import com.sun.tools.internal.xjc.api.J2SJAXBModel;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -51,10 +50,10 @@ public class Mapa extends javax.swing.JFrame {
     }
     
     public void test1() {
-        Cruce c1 = new Cruce (20,40);
-        Cruce c2 = new Cruce (60,40);
-        Cruce c3 = new Cruce (20,80);
-        Cruce c4 = new Cruce (60,80);
+        Cruce c1 = new Cruce (20,40, "C1");
+        Cruce c2 = new Cruce (60,40, "C2");
+        Cruce c3 = new Cruce (20,80, "C3");
+        Cruce c4 = new Cruce (60,80, "C4");
 
         this.addCruce(c1);
         this.addCruce(c2);
@@ -84,7 +83,7 @@ public class Mapa extends javax.swing.JFrame {
         Cruce c_prev = null;
         for (int i = 20; i < 800; i += 40) {
             for (int j = 30; j < 800; j += 40) {
-                Cruce c = new Cruce (i,j);
+                Cruce c = new Cruce (i,j, "C");
                 this.addCruce(c);
                 if (c_prev != null) {
                     c.addNeighbor(c_prev);
@@ -105,15 +104,15 @@ public class Mapa extends javax.swing.JFrame {
     }
     
     public void test3() {
-        Cruce c1 = new Cruce (20,40);
-        Cruce c2 = new Cruce (60,40);
-        Cruce c3 = new Cruce (20,80);
-        Cruce c4 = new Cruce (60,80);
-        Cruce c5 = new Cruce (120,80);
-        Cruce c6 = new Cruce (250,140);
-        Cruce c7 = new Cruce (230,560);
-        Cruce c8 = new Cruce (500,28);
-        Cruce c9 = new Cruce (600,300);
+        Cruce c1 = new Cruce (20,40, "C1");
+        Cruce c2 = new Cruce (60,40, "C2");
+        Cruce c3 = new Cruce (20,80, "C3");
+        Cruce c4 = new Cruce (60,80, "C4");
+        Cruce c5 = new Cruce (120,80, "C5");
+        Cruce c6 = new Cruce (250,140, "C6");
+        Cruce c7 = new Cruce (230,560, "C7");
+        Cruce c8 = new Cruce (500,60, "C8");
+        Cruce c9 = new Cruce (600,300, "C9");
 
         this.addCruce(c1);
         this.addCruce(c2);
@@ -144,7 +143,7 @@ public class Mapa extends javax.swing.JFrame {
         c5.addNeighbor(c8);
         c8.addNeighbor(c5);
                 
-        Ruta r = new Ruta(c1,c7);
+        Ruta r = new Ruta(c1,c8);
         try {
             r.calcular();
         }
@@ -166,7 +165,7 @@ public class Mapa extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 0, 0));
+        setBackground(new java.awt.Color(102, 204, 0));
         setPreferredSize(new java.awt.Dimension(800, 800));
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
