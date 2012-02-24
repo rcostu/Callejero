@@ -40,9 +40,7 @@ public class Cruce {
      * @param cruce 
      */
     public void addNeighbor(Cruce cruce) {
-        
         neighbors.add(cruce);
-        
     }
     
     /**
@@ -53,6 +51,7 @@ public class Cruce {
         
         g.drawRect(x-3, y-3, 6, 6);
         g.fillRect(this.x-3, this.y-3, 6, 6);
+        g.drawString(this.toString(), this.x, this.y);
         
     }
     

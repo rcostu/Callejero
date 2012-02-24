@@ -60,11 +60,15 @@ public class Mapa extends javax.swing.JFrame {
         this.addCruce(c4);
 
         c1.addNeighbor(c2);
+        c2.addNeighbor(c1);
         c1.addNeighbor(c3);
+        c3.addNeighbor(c1);
         c2.addNeighbor(c4);
+        c4.addNeighbor(c2);
         c3.addNeighbor(c4);
+        c4.addNeighbor(c3);
                 
-        Ruta r = new Ruta(c1,c4);
+        Ruta r = new Ruta(c2,c3);
         r.calcular();
         r.draw(this);
     }
@@ -77,12 +81,13 @@ public class Mapa extends javax.swing.JFrame {
                 this.addCruce(c);
                 if (c_prev != null) {
                     c.addNeighbor(c_prev);
+                    c_prev.addNeighbor(c);
                 }
                 c_prev = c;
             }
         }
         
-        Ruta r = new Ruta(cruces.get(5),cruces.get(35));
+        Ruta r = new Ruta(cruces.get(5),cruces.get(20));
         r.calcular();
         r.draw(this);
     }
@@ -128,7 +133,7 @@ public class Mapa extends javax.swing.JFrame {
             public void run() {
                 mapa.setVisible(true);
                
-                mapa.test2();
+                mapa.test1();
             }
         });
         

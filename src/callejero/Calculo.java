@@ -11,10 +11,10 @@ import java.util.ArrayList;
  */
 public class Calculo {
     
-    private ArrayList<Cruce> resultado; 
-    private ArrayList<Cruce> explorados;
+    private ArrayList<Cruce> resultado = new ArrayList<Cruce>(); 
+    private ArrayList<Cruce> explorados = new ArrayList<Cruce>();
     
-    public ArrayList<Cruce> recursiveSearch(ArrayList<Cruce> resultado, ArrayList<Cruce> explorados, Cruce inicio, Cruce fin){
+    public ArrayList<Cruce> recursiveSearch(Cruce inicio, Cruce fin){
         
         if(explorados.contains(inicio))
             return null;
@@ -28,7 +28,7 @@ public class Calculo {
         ArrayList<Cruce> tmp;
         
         for(int i=0;i<neighbors.size() && !resultado.contains(fin);i++){
-            tmp = recursiveSearch(resultado, explorados, neighbors.get(i), fin);
+            tmp = recursiveSearch(neighbors.get(i), fin);
             explorados.add(neighbors.get(i));
             if (tmp!=null)
                 resultado.add(0,neighbors.get(i));
@@ -40,9 +40,7 @@ public class Calculo {
     }
     
     public ArrayList<Cruce> search(Cruce inicio, Cruce fin){
-        resultado = new ArrayList<Cruce>();
-        explorados = new ArrayList<Cruce>();
-        resultado = recursiveSearch(resultado, explorados, inicio, fin);
+        recursiveSearch(inicio, fin);
         resultado.add(0,inicio);
         return resultado;
     }
