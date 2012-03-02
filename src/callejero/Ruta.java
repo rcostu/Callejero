@@ -4,18 +4,12 @@
  */
 package callejero;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.util.ArrayList;
-import java.lang.Exception;
-
 /**
  *
  * @author roberto
  */
-public class Ruta extends javax.swing.JFrame {
+public class Ruta{
     
     ArrayList<Cruce> route;
     Cruce origin;
@@ -26,6 +20,10 @@ public class Ruta extends javax.swing.JFrame {
         this.destination = destination;
     }
     
+    /**
+     * Calcular una ruta de un origen a un destino
+     * @throws Exception 
+     */
     public void calcular() throws Exception {
         this.route =  new Calculo().search(origin, destination);
         if (this.route == null) {
@@ -33,23 +31,15 @@ public class Ruta extends javax.swing.JFrame {
         }
     }
     
-    
-    public void draw (Mapa m){
-        Graphics g = m.getGraphics();
-        g.setColor(Color.red);
-        Graphics2D g2 = (Graphics2D)g;
-        g2.setStroke(new BasicStroke(12));
- 
-        int i = 0;
-        while (i < this.route.size()-1){
-            this.route.get(i).paint(g);
-            this.route.get(i).highlightCruce(g, this.route.get(++i));
+     /**
+     * Calcular una ruta de un origen a un destino pasando
+     *por puntos intermedios
+     * @throws Exception
+     */
+    /*public void calcular(ArrayList<Cruce> puntosItermedios) throws Exception {
+        this.route = new Calculo().search(origin, destination);
+        if (this.route == null) {
+            throw new Exception("Ruta no encontrada");
         }
-        this.route.get(i).paint(g);
-        
-    }
-    
-
+    }*/
 }
-
- 

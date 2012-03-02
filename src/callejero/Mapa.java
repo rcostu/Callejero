@@ -4,157 +4,75 @@
  */
 package callejero;
 
-
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  *
- * @author roberto
- * @author cristian
- * @author alvaro
  * @author hui
- * 
  */
-public class Mapa extends javax.swing.JFrame {
-
+public class Mapa extends javax.swing.JPanel {
     
-    private final ArrayList<Cruce> cruces = new ArrayList<Cruce>();
-    
-    
+    private ArrayList<Cruce> cruces = new ArrayList<Cruce>();
+    public Ruta ruta; 
+    private int x, y;
     /**
      * Creates new form Mapa
      */
     public Mapa() {
         initComponents();
     }
-    
-    public void addCruce ( Cruce c) {
-        this.cruces.add(c);
-    }
-    
-    @Override
-    public void paint(Graphics g) {
-        g.setColor(Color.white);
-        Graphics2D g2 = (Graphics2D)g;
+    /**
+     * Sobreescribir el metodo paintcomponent
+     * @param g 
+     */
+   @Override
+    public void paintComponent(Graphics g) {
+       //se dibuja la mapa
+        super.paintComponent(g);
+        g.setColor(Color.blue);
+        Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(8));
-        
+
         for (final Cruce c : cruces) {
             c.paint(g);
             c.drawCruce(g);
         }
+        // se dibuja la ruta
+        g2.setColor(Color.red);
+        g2.setStroke(new BasicStroke(12));
+
+        int i = 0;
+        while (i < this.ruta.route.size() - 1) {
+            this.ruta.route.get(i).paint(g);
+            this.ruta.route.get(i).highlightCruce(g, this.ruta.route.get(++i));
+        }
+        this.ruta.route.get(i).paint(g);
     }
-    
-    public void test1() {
-        Cruce c1 = new Cruce (20,40, "C1");
-        Cruce c2 = new Cruce (60,40, "C2");
-        Cruce c3 = new Cruce (20,80, "C3");
-        Cruce c4 = new Cruce (60,80, "C4");
-
-        this.addCruce(c1);
-        this.addCruce(c2);
-        this.addCruce(c3);
-        this.addCruce(c4);
-
-        c1.addNeighbor(c2);
-        c2.addNeighbor(c1);
-        c1.addNeighbor(c3);
-        c3.addNeighbor(c1);
-        c2.addNeighbor(c4);
-        c4.addNeighbor(c2);
-        c3.addNeighbor(c4);
-        c4.addNeighbor(c3);
-                
-        Ruta r = new Ruta(c2,c3);
-        try {
-            r.calcular();
-        }
-        catch(Exception e){
-            return;
-        }
-        r.draw(this);
-    }
-    
-    public void test2() {
-        Cruce c_prev = null;
-        for (int i = 20; i < 800; i += 40) {
-            for (int j = 30; j < 800; j += 40) {
-                Cruce c = new Cruce (i,j, "C");
-                this.addCruce(c);
-                if (c_prev != null) {
-                    c.addNeighbor(c_prev);
-                    c_prev.addNeighbor(c);
-                }
-                c_prev = c;
-            }
-        }
-        
-        Ruta r = new Ruta(cruces.get(5),cruces.get(20));
-        try {
-            r.calcular();
-        }
-        catch(Exception e){
-            return;
-        }
-        r.draw(this);
-    }
-    
-    public void test3() {
-        Cruce c1 = new Cruce (20,40, "C1");
-        Cruce c2 = new Cruce (60,40, "C2");
-        Cruce c3 = new Cruce (20,80, "C3");
-        Cruce c4 = new Cruce (60,80, "C4");
-        Cruce c5 = new Cruce (120,80, "C5");
-        Cruce c6 = new Cruce (250,140, "C6");
-        Cruce c7 = new Cruce (230,560, "C7");
-        Cruce c8 = new Cruce (500,60, "C8");
-        Cruce c9 = new Cruce (600,300, "C9");
-
-        this.addCruce(c1);
-        this.addCruce(c2);
-        this.addCruce(c3);
-        this.addCruce(c4);
-        this.addCruce(c5);
-        this.addCruce(c6);
-        this.addCruce(c7);
-        this.addCruce(c8);
-        this.addCruce(c9);
-
-        c1.addNeighbor(c2);
-        c2.addNeighbor(c1);
-        c1.addNeighbor(c3);
-        c3.addNeighbor(c1);
-        c2.addNeighbor(c4);
-        c4.addNeighbor(c2);
-        c3.addNeighbor(c4);
-        c4.addNeighbor(c3);
-        c5.addNeighbor(c6);
-        c6.addNeighbor(c5);
-        c4.addNeighbor(c5);
-        c5.addNeighbor(c4);
-        c6.addNeighbor(c7);
-        c7.addNeighbor(c6);
-        c6.addNeighbor(c8);
-        c8.addNeighbor(c6);
-        c5.addNeighbor(c8);
-        c8.addNeighbor(c5);
-                
-        Ruta r = new Ruta(c1,c8);
-        try {
-            r.calcular();
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Ruta no encontrada");
-            return;
-        }
-        r.draw(this);
+    /**
+     *
+     * @param c
+     */  
+    public void addCruce(Cruce c) {
+        this.cruces.add(c);
     }
 
-    
+       /**
+        * 
+        */
+       public int obtenerX(){
+           return this.x;
+       }
+       
+       /**
+        * 
+        */
+       public int obtenerY(){
+           return this.y;
+       }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -164,43 +82,36 @@ public class Mapa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(102, 204, 0));
-        setPreferredSize(new java.awt.Dimension(800, 800));
-
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 300, Short.MAX_VALUE)
-        );
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        
-        final Mapa mapa = new Mapa();
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            @Override
-            public void run() {
-                mapa.setVisible(true);
-                mapa.test3();
+        setBackground(new java.awt.Color(255, 255, 0));
+        setPreferredSize(new java.awt.Dimension(900, 900));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
             }
         });
-        
-        
-        
-    }
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
+        );
+
+        getAccessibleContext().setAccessibleParent(this);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        x = evt.getX();
+        y = evt.getY();
+        System.out.println(x);
+        System.out.println(y);
+    }//GEN-LAST:event_formMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package callejero;
+
 import java.util.ArrayList;
 
 /**
@@ -23,8 +24,6 @@ public class Calculo {
             resultado.add(fin);
             return resultado;
         }
-        
-        
         explorados.add(inicio);
         ArrayList<Cruce> neighbors = inicio.getNeighbors();
         ArrayList<Cruce> tmp;
@@ -33,12 +32,9 @@ public class Calculo {
             tmp = recursiveSearch(neighbors.get(i), fin);
             System.out.println(i+" "+tmp);
             if (tmp!=null && tmp.contains(fin) && neighbors.get(i)!=fin)
-                resultado.add(0,neighbors.get(i));
-            
+                resultado.add(0,neighbors.get(i));   
         }
-        
         return resultado;
-        
     }
     
     public ArrayList<Cruce> search(Cruce inicio, Cruce fin){
@@ -49,6 +45,22 @@ public class Calculo {
         }
         System.out.println(resultado);
         return resultado;
+    }
+
+    /**
+     * Encontrar una ruta del punto inicio al punto fin pasando
+     * por los puntos intermedios
+     * @param inicio
+     * @param fin
+     * @param puntosIntermedios
+     * @return 
+     */
+    public ArrayList<Cruce> search(Cruce inicio, Cruce fin, ArrayList<Cruce> puntosIntermedios) {
+        for(int i = 0; i < puntosIntermedios.size(); i++){
+            this.search(inicio, puntosIntermedios.get(i));
+            
+        }
+          return resultado;
     }
     
 }
