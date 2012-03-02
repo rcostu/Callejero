@@ -86,7 +86,7 @@ public class Mapa extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new java.awt.Color(255, 255, 0));
+        setBackground(new java.awt.Color(255, 255, 207));
         setPreferredSize(new java.awt.Dimension(900, 900));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
