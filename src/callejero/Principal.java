@@ -71,6 +71,9 @@ public class Principal extends javax.swing.JFrame {
         c8.addNeighbor(c5);
                 
         mapa.ruta = new Ruta(c1,c8);
+        
+        mapa.camion = new Camion(mapa.ruta.origin.getX(), mapa.ruta.origin.getY());
+        
         try {
             mapa.ruta.calcular();
         }
@@ -78,6 +81,10 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ruta no encontrada");
         }
         //r.draw(this.mapa);
+        
+        for(final Cruce c : mapa.ruta.route) {
+            mapa.camion.move(c);
+        }
     }
         
     /**

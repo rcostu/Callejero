@@ -18,6 +18,7 @@ public class Mapa extends javax.swing.JPanel {
     
     private ArrayList<Cruce> cruces = new ArrayList<Cruce>();
     public Ruta ruta; 
+    public Camion camion;
     private int x, y;
     /**
      * Creates new form Mapa
@@ -51,6 +52,9 @@ public class Mapa extends javax.swing.JPanel {
             this.ruta.route.get(i).highlightCruce(g, this.ruta.route.get(++i));
         }
         this.ruta.route.get(i).paint(g);
+        
+        g2.setColor(Color.white);
+        this.camion.paint(g);             
     }
     /**
      *
