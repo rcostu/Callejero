@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -31,29 +32,19 @@ public class Mapa extends javax.swing.JPanel {
      * @param g 
      */
    @Override
-    public void paintComponent(Graphics g) {
-       //se dibuja la mapa
-        super.paintComponent(g);
+    public void paint(Graphics g) {
+       //se dibuja las cruces
+        super.paint(g);
         g.setColor(Color.blue);
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(8));
-
         for (final Cruce c : cruces) {
             c.paint(g);
             c.drawCruce(g);
         }
         // se dibuja la ruta
-        g2.setColor(Color.red);
-        g2.setStroke(new BasicStroke(12));
-
-        int i = 0;
-        while (i < this.ruta.route.size() - 1) {
-            this.ruta.route.get(i).paint(g);
-            this.ruta.route.get(i).highlightCruce(g, this.ruta.route.get(++i));
-        }
-        this.ruta.route.get(i).paint(g);
-        
-        g2.setColor(Color.white);
+        this.ruta.paint(g);
+        // se dibuja el camion
         this.camion.paint(g);             
     }
     /**

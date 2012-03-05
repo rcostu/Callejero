@@ -6,6 +6,9 @@ package callejero;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -21,15 +24,9 @@ public class Camion {
     }
     
     
-    /**
-     * 
-     * @param g 
-     */
     public void paint(Graphics g) {
-        
-        g.drawRect(x-3, y-3, 6, 6);
-        g.fillRect(this.x-3, this.y-3, 6, 6);
-        
+        ImageIcon im=new ImageIcon(this.getClass().getResource("../images/camion.png"));
+        ((Graphics2D)g).drawImage(im.getImage(), x-15, y-15,30,30, null);
     }
     
     public void move(Cruce c) {

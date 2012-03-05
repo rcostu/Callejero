@@ -4,6 +4,10 @@
  */
 package callejero;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 /**
  *
@@ -42,4 +46,15 @@ public class Ruta{
             throw new Exception("Ruta no encontrada");
         }
     }*/
+    
+    
+    public void paint(Graphics g){
+        g.setColor(Color.red);
+        ((Graphics2D)g).setStroke(new BasicStroke(12));
+        int i = 0;
+        while (i < this.route.size() - 1) {
+            this.route.get(i).paint(g);
+            this.route.get(i).highlightCruce(g, this.route.get(++i));
+        }
+    }
 }
