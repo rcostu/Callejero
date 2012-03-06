@@ -43,12 +43,12 @@ public class Principal extends javax.swing.JFrame {
         Cruce c9 = new Cruce (600,300, "C9");
         Cruce c10 = new Cruce (500,450, "C10");
         Cruce c11 = new Cruce (700,400, "C11");
-        Cruce c12 = new Cruce (240,680, "C12");
+        Cruce c12 = new Cruce (240,580, "C12");
         Cruce c13 = new Cruce (625,45, "C13");
         Cruce c14 = new Cruce (520,80, "C14");
-        Cruce c15 = new Cruce (250,720, "C15");
+        Cruce c15 = new Cruce (250,520, "C15");
         Cruce c16 = new Cruce (360,415, "C16");
-        Cruce c17 = new Cruce (732,670, "C17");
+        Cruce c17 = new Cruce (732,570, "C17");
         Cruce c18 = new Cruce (612,80, "C18");
 
         this.mapa.addCruce(c1);
