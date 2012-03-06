@@ -50,7 +50,7 @@ public class Ruta{
     
     public void paint(Graphics g){
         g.setColor(Color.red);
-        ((Graphics2D)g).setStroke(new BasicStroke(12));
+        ((Graphics2D)g).setStroke(new BasicStroke(4));
         int i = 0;
         while (i < this.route.size() - 1) {
             this.route.get(i).paint(g);

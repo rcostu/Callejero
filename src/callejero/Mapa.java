@@ -35,9 +35,9 @@ public class Mapa extends javax.swing.JPanel {
     public void paint(Graphics g) {
        //se dibuja las cruces
         super.paint(g);
-        g.setColor(Color.blue);
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setStroke(new BasicStroke(8));
+        
+        
+        
         for (final Cruce c : cruces) {
             c.paint(g);
             c.drawCruce(g);

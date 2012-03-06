@@ -4,7 +4,11 @@
  */
 package callejero;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Line2D;
 import java.util.ArrayList;
 
 /**
@@ -64,9 +68,18 @@ public class Cruce {
     public void drawCruce(Graphics g){        
         
         for (Cruce c : this.neighbors){
+            Graphics2D g2d = (Graphics2D) g;
+
+            // Road
+            g2d.setColor(Color.black);
+            g2d.setStroke(new BasicStroke(9));
             g.drawLine(x, y, c.getX(), c.getY());
-        }
-        
+
+            // Dashed line
+            g2d.setColor(Color.white);
+            g2d.setStroke(new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0));
+            g.drawLine(x, y, c.getX(), c.getY());
+        }        
     }
     
     public void highlightCruce(Graphics g, Cruce b){
