@@ -38,8 +38,17 @@ public class Principal extends javax.swing.JFrame {
         Cruce c5 = new Cruce (120,80, "C5");
         Cruce c6 = new Cruce (250,140, "C6");
         Cruce c7 = new Cruce (230,400, "C7");
-        Cruce c8 = new Cruce (500,60, "C8");
+        Cruce c8 = new Cruce (420,90, "C8");
         Cruce c9 = new Cruce (600,300, "C9");
+        Cruce c10 = new Cruce (500,450, "C10");
+        Cruce c11 = new Cruce (700,400, "C11");
+        Cruce c12 = new Cruce (240,680, "C12");
+        Cruce c13 = new Cruce (625,45, "C13");
+        Cruce c14 = new Cruce (520,80, "C14");
+        Cruce c15 = new Cruce (250,720, "C15");
+        Cruce c16 = new Cruce (360,415, "C16");
+        Cruce c17 = new Cruce (732,670, "C17");
+        Cruce c18 = new Cruce (612,80, "C18");
 
         this.mapa.addCruce(c1);
         this.mapa.addCruce(c2);
@@ -50,6 +59,15 @@ public class Principal extends javax.swing.JFrame {
         this.mapa.addCruce(c7);
         this.mapa.addCruce(c8);
         this.mapa.addCruce(c9);
+        this.mapa.addCruce(c10);
+        this.mapa.addCruce(c11);
+        this.mapa.addCruce(c12);
+        this.mapa.addCruce(c13);
+        this.mapa.addCruce(c14);
+        this.mapa.addCruce(c15);
+        this.mapa.addCruce(c16);
+        this.mapa.addCruce(c17);
+        this.mapa.addCruce(c18);
 
         c1.addNeighbor(c2);
         c2.addNeighbor(c1);
@@ -69,7 +87,29 @@ public class Principal extends javax.swing.JFrame {
         c8.addNeighbor(c6);
         c5.addNeighbor(c8);
         c8.addNeighbor(c5);
-                
+        c2.addNeighbor(c13);
+        c13.addNeighbor(c2);
+        c8.addNeighbor(c14);
+        c14.addNeighbor(c8);
+        c14.addNeighbor(c18);
+        c18.addNeighbor(c14);
+        c13.addNeighbor(c18);
+        c18.addNeighbor(c13);
+        c18.addNeighbor(c11);
+        c11.addNeighbor(c18);
+        c7.addNeighbor(c16);
+        c16.addNeighbor(c7);
+        c10.addNeighbor(c11);
+        c11.addNeighbor(c10);
+        c10.addNeighbor(c16);
+        c16.addNeighbor(c10);
+        c16.addNeighbor(c12);
+        c12.addNeighbor(c16);
+        c12.addNeighbor(c15);
+        c15.addNeighbor(c12);
+        c10.addNeighbor(c17);
+        c17.addNeighbor(c10);
+                 
         mapa.ruta = new Ruta(c1,c8);
         
         mapa.camion = new Camion(mapa.ruta.origin.getX(), mapa.ruta.origin.getY());
