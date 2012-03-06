@@ -15,13 +15,11 @@ import java.util.ArrayList;
  */
 public class Ruta{
     
-    ArrayList<Cruce> route;
-    Cruce origin;
-    Cruce destination;
+    ArrayList<Cruce> route = new ArrayList<Cruce>();
+    ArrayList<Cruce> points;
     
-    public Ruta (Cruce origin, Cruce destination){
-        this.origin = origin;
-        this.destination = destination;
+    public Ruta (ArrayList<Cruce> points){
+        this.points = points;
     }
     
     /**
@@ -29,15 +27,8 @@ public class Ruta{
      * @throws Exception 
      */
     public void calcular() throws Exception {
-        this.route =  new Calculo().search(origin, destination);
-        if (this.route == null) {
-            throw new Exception("Ruta no encontrada");
-        }
-    }
-    
-    public void calculo(ArrayList<Cruce> puntos) throws Exception {
         Cruce cAnt = null;
-        for (final Cruce c: puntos) {
+        for (final Cruce c: points) {
             if (cAnt != null) {
                 ArrayList<Cruce> tmp = new Calculo().search(cAnt, c);
                 if (tmp == null) {
@@ -68,6 +59,7 @@ public class Ruta{
         int i = 0;
         while (i < this.route.size() - 1) {
             this.route.get(i).paint(g);
+            g.setColor(Color.RED);
             this.route.get(i).highlightCruce(g, this.route.get(++i));
         }
     }

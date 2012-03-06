@@ -54,9 +54,9 @@ public class Cruce {
      * @param g 
      */
     public void paint(Graphics g) {
-        
         g.drawRect(x-3, y-3, 6, 6);
         g.fillRect(this.x-3, this.y-3, 6, 6);
+        g.setColor(Color.BLACK);
         g.drawString(this.name, this.x+5, this.y-8);
         
     }
@@ -101,11 +101,7 @@ public class Cruce {
     public String toString(){
         
         StringBuilder result = new StringBuilder();
-        result.append("(");
-        result.append(x);
-        result.append(",");
-        result.append(y);
-        result.append(")");
+        result.append(this.name);
         return result.toString();
         
     }

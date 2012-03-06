@@ -110,21 +110,22 @@ public class Principal extends javax.swing.JFrame {
         c15.addNeighbor(c12);
         c10.addNeighbor(c17);
         c17.addNeighbor(c10);
-                 
-        mapa.ruta = new Ruta(c1,c8);
-        
-        mapa.camion = new Camion(mapa.ruta.origin.getX(), mapa.ruta.origin.getY());
-        
+              
         ArrayList<Cruce> prueba = new ArrayList<Cruce>();
         
         prueba.add(c1);
-        prueba.add(c2);
+        /*prueba.add(c2);
         prueba.add(c4);
-        prueba.add(c5);
+        prueba.add(c5);*/
         prueba.add(c8);
         
+        mapa.ruta = new Ruta(prueba);
+        
+        mapa.camion = new Camion(mapa.ruta.points.get(0).getX(), 
+                mapa.ruta.points.get(mapa.ruta.points.size()-1).getY());
+        
         try {
-            mapa.ruta.calculo(prueba);
+            mapa.ruta.calcular();
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Ruta no encontrada");
