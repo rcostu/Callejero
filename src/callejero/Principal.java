@@ -131,17 +131,7 @@ public class Principal extends javax.swing.JFrame {
         }
         //r.draw(this.mapa);
         
-        for(final Cruce c : mapa.ruta.route) {
-            mapa.camion.move(c);    
-            mapa.paint(mapa.getGraphics());
-            mapa.camion.paint(mapa.getGraphics());
-            try {
-                Thread.sleep(500);
-            }
-            catch (Exception e) {
-                System.out.println(e);
-            }
-        }
+        mapa.camion.drive(mapa);
     }
         
     /**
