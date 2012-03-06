@@ -6,6 +6,7 @@ package callejero;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -114,8 +115,16 @@ public class Principal extends javax.swing.JFrame {
         
         mapa.camion = new Camion(mapa.ruta.origin.getX(), mapa.ruta.origin.getY());
         
+        ArrayList<Cruce> prueba = new ArrayList<Cruce>();
+        
+        prueba.add(c1);
+        prueba.add(c2);
+        prueba.add(c4);
+        prueba.add(c5);
+        prueba.add(c8);
+        
         try {
-            mapa.ruta.calcular();
+            mapa.ruta.calculo(prueba);
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Ruta no encontrada");

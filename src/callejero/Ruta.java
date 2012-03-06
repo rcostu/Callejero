@@ -35,6 +35,20 @@ public class Ruta{
         }
     }
     
+    public void calculo(ArrayList<Cruce> puntos) throws Exception {
+        Cruce cAnt = null;
+        for (final Cruce c: puntos) {
+            if (cAnt != null) {
+                ArrayList<Cruce> tmp = new Calculo().search(cAnt, c);
+                if (tmp == null) {
+                    throw new Exception("ruta no encontrada");
+                }
+                this.route.addAll(tmp);
+            }
+            cAnt = c;
+        }
+    }
+    
      /**
      * Calcular una ruta de un origen a un destino pasando
      *por puntos intermedios
