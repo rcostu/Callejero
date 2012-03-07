@@ -20,9 +20,10 @@ public class Almacen {
     private int y;
     private int cantidad;
 
-    public Almacen(int x, int y) {
+    public Almacen(int x, int y, int c) {
         this.x = x;
         this.y = y;
+        this.cantidad = c;
     }
 
     public void paint(Graphics g) {
