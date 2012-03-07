@@ -20,6 +20,7 @@ public class Mapa extends javax.swing.JPanel {
     private ArrayList<Cruce> cruces = new ArrayList<Cruce>();
     public Ruta ruta; 
     public Camion camion;
+    public Almacen almacen;
     private int x, y;
     /**
      * Creates new form Mapa
@@ -35,15 +36,14 @@ public class Mapa extends javax.swing.JPanel {
     public void paint(Graphics g) {
        //se dibuja las cruces
         super.paint(g);
-        
-        
-        
         for (final Cruce c : cruces) {
             c.paint(g);
             c.drawCruce(g);
         }
         // se dibuja la ruta
         this.ruta.paint(g);
+        // se dibuja el almacen
+        this.almacen.paint(g);
         // se dibuja el camion
         this.camion.paint(g);             
     }

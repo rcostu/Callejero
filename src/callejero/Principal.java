@@ -113,13 +113,13 @@ public class Principal extends javax.swing.JFrame {
               
         ArrayList<Cruce> prueba = new ArrayList<Cruce>();
         
-        prueba.add(c10);
+        prueba.add(c1);
         prueba.add(c16);
         prueba.add(c12);
         prueba.add(c15);
         
         mapa.ruta = new Ruta(prueba);
-        
+        mapa.almacen = new Almacen(prueba.get(0).getX(),prueba.get(0).getY());
         mapa.camion = new Camion(mapa.ruta.points.get(0).getX(), 
                 mapa.ruta.points.get(mapa.ruta.points.size()-1).getY());
         
