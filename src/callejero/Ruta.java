@@ -32,9 +32,14 @@ public class Ruta{
             if (cAnt != null) {
                 ArrayList<Cruce> tmp = new Calculo().search(cAnt, c);
                 if (tmp == null) {
-                    throw new Exception("ruta no encontrada");
+                    throw new Exception("Ruta no encontrada");
                 }
-                this.route.addAll(tmp);
+                if (!this.route.contains(tmp.get(0))) {
+                    this.route.addAll(tmp);
+                }
+                else {
+                    this.route.addAll(tmp.subList(1, tmp.size()-1));
+                }
             }
             cAnt = c;
         }
