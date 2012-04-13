@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package callejero;
+package cartograph;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -19,8 +19,8 @@ public class Mapa extends javax.swing.JPanel {
     
     private ArrayList<Cruce> cruces = new ArrayList<Cruce>();
     public Ruta ruta; 
-    public Camion camion;
-    public Almacen almacen;
+    public Transporte transporte;
+    public Spot almacen;
     private int x, y;
     /**
      * Creates new form Mapa
@@ -45,8 +45,13 @@ public class Mapa extends javax.swing.JPanel {
         // se dibuja el almacen
         this.almacen.paint(g);
         // se dibuja el camion
-        this.camion.paint(g);             
+        this.transporte.paint(g);             
     }
+   
+   public void addTransporte(Transporte t){
+       this.transporte = t;
+       this.transporte.move(ruta.points.get(0));
+   }
     /**
      *
      * @param c

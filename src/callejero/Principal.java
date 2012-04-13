@@ -4,6 +4,7 @@
  */
 package callejero;
 
+import cartograph.*;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -122,8 +123,10 @@ public class Principal extends javax.swing.JFrame {
         
         int cantidad = 50;
         mapa.almacen = new Almacen(prueba.get(0).getX(),prueba.get(0).getY(),cantidad);
-        mapa.camion = new Camion(mapa.ruta.points.get(0).getX(), 
-                mapa.ruta.points.get(mapa.ruta.points.size()-1).getY());
+        
+        Camion camion = new Camion();
+        
+        mapa.addTransporte(camion);
         
         try {
             mapa.ruta.calcular();
@@ -133,7 +136,7 @@ public class Principal extends javax.swing.JFrame {
         }
         //r.draw(this.mapa);
         
-        mapa.camion.drive(mapa);
+        mapa.transporte.drive(mapa);
     }
         
     /**

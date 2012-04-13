@@ -1,34 +1,19 @@
-package callejero;
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+package callejero;
 
-
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import javax.swing.ImageIcon;
+import cartograph.Spot;
 
 /**
  *
- * @author hui
+ * @author alvaro
  */
-public class Almacen {
-
-    private int x;
-    private int y;
-    private int cantidad;
-
+public class Almacen extends Spot{
+    
     public Almacen(int x, int y, int c) {
-        this.x = x;
-        this.y = y;
-        this.cantidad = c;
-    }
-
-    public void paint(Graphics g) {
-        ImageIcon im = new ImageIcon(this.getClass().getResource("../images/almacen.png"));
-        ((Graphics2D) g).drawImage(im.getImage(), x - 15, y - 15, 40, 40, null);
+     super(x,y,c);
     }
     
 }
