@@ -16,10 +16,14 @@ import javax.swing.ImageIcon;
 public class Transporte {
     
     private int x, y;
+    private String image;
     
+    public Transporte (String image) {
+        this.image = image;
+    }
     
     public void paint(Graphics g) {
-        ImageIcon im=new ImageIcon(this.getClass().getResource("../images/camion.png"));
+        ImageIcon im=new ImageIcon(this.getClass().getResource(this.image));
         ((Graphics2D)g).drawImage(im.getImage(), x-15, y-15,30,30, null);
     }
     

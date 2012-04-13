@@ -12,8 +12,8 @@ import cartograph.Spot;
  */
 public class Almacen extends Spot{
     
-    public Almacen(int x, int y, int c) {
-     super(x,y,c);
+    public Almacen(int x, int y, int c, String image) {
+     super(x,y,c,image);
     }
     
 }

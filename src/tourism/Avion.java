@@ -11,4 +11,8 @@ import cartograph.Transporte;
  */
 public class Avion extends Transporte {
     
+    public Avion (String image) {
+        super(image);
+    }
+    
 }

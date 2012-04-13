@@ -122,9 +122,9 @@ public class Principal extends javax.swing.JFrame {
         mapa.ruta = new Ruta(prueba);
         
         int cantidad = 50;
-        mapa.almacen = new Almacen(prueba.get(0).getX(),prueba.get(0).getY(),cantidad);
+        mapa.almacen = new Almacen(prueba.get(0).getX(),prueba.get(0).getY(),cantidad,"../images/almacen.png");
         
-        Camion camion = new Camion();
+        Camion camion = new Camion("../images/camion.png");
         
         mapa.addTransporte(camion);
         

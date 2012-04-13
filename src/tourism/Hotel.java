@@ -11,8 +11,8 @@ import cartograph.Spot;
  */
 public class Hotel extends Spot {
     
-    public Hotel  (int x, int y, int c) {
-        super(x,y,c);
+    public Hotel  (int x, int y, int c, String image) {
+        super(x,y,c,image);
     }
     
 }
