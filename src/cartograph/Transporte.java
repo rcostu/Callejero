@@ -34,9 +34,9 @@ public class Transporte {
     
     public void drive(Mapa mapa) {
         for(final Cruce c : mapa.ruta.route) {
-            mapa.transporte.move(c);    
+            this.move(c);    
             mapa.paint(mapa.getGraphics());
-            mapa.transporte.paint(mapa.getGraphics());
+            this.paint(mapa.getGraphics());
             try {
                 Thread.sleep(500);
             }
