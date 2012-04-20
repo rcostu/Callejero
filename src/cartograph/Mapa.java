@@ -39,6 +39,11 @@ public class Mapa extends javax.swing.JPanel {
     public void paint(Graphics g) {
        //se dibuja las cruces
        
+        Dimension tamanio = getSize();
+        ImageIcon imagenFondo = new ImageIcon(getClass().getResource("../images/europe.png"));        
+        g.drawImage(imagenFondo.getImage(),0,0,tamanio.width, tamanio.height, null);        
+        setOpaque(false);
+        
         g.drawImage(this.image,0, 0, null);
         super.paint(g);
         for (final Cruce c : cruces) {
@@ -51,6 +56,10 @@ public class Mapa extends javax.swing.JPanel {
         this.almacen.paint(g);
         // se dibuja el camion
         this.transporte.paint(g);
+        
+
+        //super.paintComponent(g);
+        
     }
    
    public void addTransporte(Transporte t){
