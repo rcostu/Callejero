@@ -4,11 +4,13 @@
  */
 package cartograph;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.io.File;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
@@ -22,6 +24,7 @@ public class Mapa extends javax.swing.JPanel {
     public Transporte transporte;
     public Spot almacen;
     private int x, y;
+    private Image image = new ImageIcon("../images/europe.png").getImage();
     /**
      * Creates new form Mapa
      */
@@ -35,6 +38,8 @@ public class Mapa extends javax.swing.JPanel {
    @Override
     public void paint(Graphics g) {
        //se dibuja las cruces
+       
+        g.drawImage(this.image,0, 0, null);
         super.paint(g);
         for (final Cruce c : cruces) {
             c.paint(g);
@@ -45,7 +50,7 @@ public class Mapa extends javax.swing.JPanel {
         // se dibuja el almacen
         this.almacen.paint(g);
         // se dibuja el camion
-        this.transporte.paint(g);             
+        this.transporte.paint(g);
     }
    
    public void addTransporte(Transporte t){
@@ -82,7 +87,7 @@ public class Mapa extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new java.awt.Color(255, 255, 207));
+        setBackground(null);
         setPreferredSize(new java.awt.Dimension(900, 900));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
