@@ -22,13 +22,7 @@ public class Principal {
     
     private Mapa mapa = new Mapa();
 
-    /**
-     * Creates new form Principal
-     */
-    public Principal() {
-        mapa.setPreferredSize(new Dimension(900,900));
-//        mapa.setVisible(true);
-    }
+
     
     public void test() {
         Cruce c1 = new Cruce (20,40, "C1");
