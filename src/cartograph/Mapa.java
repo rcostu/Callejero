@@ -4,52 +4,45 @@
  */
 package cartograph;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
-import java.io.File;
+
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
  *
  * @author hui
  */
-public class Mapa extends javax.swing.JPanel {
-    
+public class Mapa extends javax.swing.JFrame {
+
     private ArrayList<Cruce> cruces = new ArrayList<Cruce>();
-    public Ruta ruta; 
+    public Ruta ruta;
     public Transporte transporte;
     public Spot almacen;
     private int x, y;
     private Image image = new ImageIcon("../images/europe.png").getImage();
-    /**
-     * Creates new form Mapa
-     */
+
     public Mapa() {
-        initComponents();
+        super("Callejero");
+        setSize(900, 900);
+        setVisible(true);
     }
-    /**
-     * Sobreescribir el metodo paintcomponent
-     * @param g 
-     */
-   @Override
+
+    @Override
     public void paint(Graphics g) {
-       //se dibuja las cruces
-       
+        super.paint(g);
+        
         Dimension tamanio = getSize();
         ImageIcon imagenFondo = new ImageIcon(getClass().getResource("../images/europe.png"));        
         g.drawImage(imagenFondo.getImage(),0,0,tamanio.width, tamanio.height, null);        
-        setOpaque(false);
         
-        g.drawImage(this.image,0, 0, null);
-        super.paint(g);
         for (final Cruce c : cruces) {
             c.paint(g);
             c.drawCruce(g);
         }
+        
         // se dibuja la ruta
         this.ruta.paint(g);
         // se dibuja el almacen
@@ -61,32 +54,34 @@ public class Mapa extends javax.swing.JPanel {
         //super.paintComponent(g);
         
     }
-   
-   public void addTransporte(Transporte t){
-       this.transporte = t;
-       this.transporte.move(ruta.points.get(0));
-   }
+
+    public void addTransporte(Transporte t) {
+        this.transporte = t;
+        this.transporte.move(ruta.points.get(0));
+    }
+
     /**
      *
      * @param c
-     */  
+     */
     public void addCruce(Cruce c) {
         this.cruces.add(c);
     }
 
-       /**
-        * 
-        */
-       public int obtenerX(){
-           return this.x;
-       }
-       
-       /**
-        * 
-        */
-       public int obtenerY(){
-           return this.y;
-       }
+    /**
+     *
+     */
+    public int obtenerX() {
+        return this.x;
+    }
+
+    /**
+     *
+     */
+    public int obtenerY() {
+        return this.y;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -125,7 +120,6 @@ public class Mapa extends javax.swing.JPanel {
         System.out.println(x);
         System.out.println(y);
     }//GEN-LAST:event_formMouseClicked
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
