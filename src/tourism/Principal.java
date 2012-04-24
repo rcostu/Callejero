@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package callejero;
+package tourism;
 
 import cartograph.*;
 import java.awt.BorderLayout;
@@ -48,16 +48,7 @@ public class Principal {
         this.mapa.addCruce(c9);
         this.mapa.addCruce(c10);
         this.mapa.addCruce(c11);
-        
-        c1.addNeighbor(c2);
-        c2.addNeighbor(c1);
-        c2.addNeighbor(c3);
-        c3.addNeighbor(c2);
-        c2.addNeighbor(c4);
-        c4.addNeighbor(c2);
-        c3.addNeighbor(c4);
-        c4.addNeighbor(c3);
-        
+              
         ArrayList<Cruce> prueba = new ArrayList<Cruce>();
         
         prueba.add(c1);
@@ -65,9 +56,9 @@ public class Principal {
         mapa.ruta = new Ruta(prueba);
         
         int cantidad = 50;
-        mapa.almacen = new Almacen(prueba.get(0).getX(),prueba.get(0).getY(),cantidad,"../images/almacen.png");
+        mapa.almacen = new Hotel(prueba.get(0).getX(),prueba.get(0).getY(),cantidad,"../images/almacen.png");
         
-        Camion camion = new Camion("../images/camion.png");
+        Avion camion = new Avion("../images/airplane.png");
         
         mapa.addTransporte(camion);
         

@@ -2,18 +2,17 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package callejero;
+package tourism;
 
 import cartograph.Spot;
-
 /**
  *
  * @author alvaro
  */
-public class Almacen extends Spot{
+public class Hotel extends Spot {
     
-    public Almacen(int x, int y, int c, String image) {
-     super(x,y,c,image);
+    public Hotel  (int x, int y, int c, String image) {
+        super(x,y,c,image);
     }
     
 }

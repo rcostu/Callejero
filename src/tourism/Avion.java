@@ -2,17 +2,16 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package callejero;
+package tourism;
 
 import cartograph.Transporte;
-
 /**
  *
  * @author alvaro
  */
-public class Camion extends Transporte {
+public class Avion extends Transporte {
     
-    public Camion (String image) {
+    public Avion (String image) {
         super(image);
     }
     
