@@ -40,6 +40,9 @@ public class Principal {
         Cruce c13 = new Cruce (390,575, "Milán");
         Cruce c14 = new Cruce (310,450, "Bruselas");
         Cruce c15 = new Cruce (325,415, "Amsterdam");
+        Cruce c16 = new Cruce (500,520, "Viena");
+        Cruce c17 = new Cruce (340,475, "Luxemburgo");
+        Cruce c18 = new Cruce (355,545, "Berna");
 
         this.mapa.addCruce(c1);
         this.mapa.addCruce(c2);
@@ -56,6 +59,9 @@ public class Principal {
         this.mapa.addCruce(c13);
         this.mapa.addCruce(c14);
         this.mapa.addCruce(c15);
+        this.mapa.addCruce(c16);
+        this.mapa.addCruce(c17);
+        this.mapa.addCruce(c18);
         
         
         c1.addNeighbor(c2);
@@ -84,6 +90,18 @@ public class Principal {
         c14.addNeighbor(c4);
         c14.addNeighbor(c15);
         c15.addNeighbor(c14);
+        c13.addNeighbor(c16);
+        c16.addNeighbor(c13);
+        c14.addNeighbor(c17);
+        c17.addNeighbor(c14);
+        c17.addNeighbor(c18);
+        c18.addNeighbor(c17);
+        c13.addNeighbor(c18);
+        c18.addNeighbor(c13);
+        c11.addNeighbor(c16);
+        c16.addNeighbor(c11);
+        c11.addNeighbor(c15);
+        c15.addNeighbor(c11);
         
         ArrayList<Cruce> prueba = new ArrayList<Cruce>();
         
