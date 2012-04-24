@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class Principal {
     
-    private Mapa mapa = new Mapa();
+    private Mapa mapa = new Mapa("../images/europe.png");
 
 
     
