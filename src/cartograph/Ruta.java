@@ -34,12 +34,7 @@ public class Ruta{
                 if (tmp == null) {
                     throw new Exception("Ruta no encontrada");
                 }
-                if (!this.route.contains(tmp.get(0))) {
-                    this.route.addAll(tmp);
-                }
-                else {
-                    this.route.addAll(tmp.subList(1, tmp.size()-1));
-                }
+                this.route.addAll(tmp);
             }
             cAnt = c;
         }
