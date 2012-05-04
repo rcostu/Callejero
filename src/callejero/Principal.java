@@ -43,6 +43,7 @@ public class Principal {
         Cruce c16 = new Cruce (500,520, "Viena");
         Cruce c17 = new Cruce (340,475, "Luxemburgo");
         Cruce c18 = new Cruce (355,545, "Berna");
+        Cruce c19 = new Cruce (575,400, "Varsovia");
 
         this.mapa.addCruce(c1);
         this.mapa.addCruce(c2);
@@ -62,6 +63,7 @@ public class Principal {
         this.mapa.addCruce(c16);
         this.mapa.addCruce(c17);
         this.mapa.addCruce(c18);
+        this.mapa.addCruce(c19);
         
         
         c1.addNeighbor(c2);
@@ -100,13 +102,18 @@ public class Principal {
         c18.addNeighbor(c13);
         c11.addNeighbor(c16);
         c16.addNeighbor(c11);
-        c11.addNeighbor(c15);
-        c15.addNeighbor(c11);
+        c11.addNeighbor(c19);
+        c19.addNeighbor(c11);
+        c15.addNeighbor(c19);
+        c19.addNeighbor(c15);
         
         ArrayList<Cruce> prueba = new ArrayList<Cruce>();
         
         prueba.add(c1);
         prueba.add(c3);
+        prueba.add(c15);
+        prueba.add(c4);
+        prueba.add(c11);
         prueba.add(c10);
         
         mapa.ruta = new Ruta(prueba);
