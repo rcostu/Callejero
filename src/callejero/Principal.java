@@ -4,9 +4,9 @@
  */
 package callejero;
 
-import cartograph.*;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import cartograph.Cruce;
+import cartograph.Mapa;
+import cartograph.Ruta;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -114,9 +114,9 @@ public class Principal {
         mapa.ruta = new Ruta(prueba);
         
         int cantidad = 50;
-        mapa.almacen = new Almacen(prueba.get(0).getX(),prueba.get(0).getY(),cantidad,"../images/almacen.png");
+        mapa.almacen = new Almacen(c1,cantidad,"../images/almacen.png");
         
-        Camion camion = new Camion("../images/camion.png");
+        Camion camion = new Camion("../images/camion.png", c1);
         
         mapa.addTransporte(camion);
         

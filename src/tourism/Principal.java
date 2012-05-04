@@ -119,9 +119,11 @@ public class Principal {
         mapa.ruta = new Ruta(prueba);
         
         int cantidad = 50;
-        mapa.almacen = new Hotel(prueba.get(0).getX(),prueba.get(0).getY(),cantidad,"../images/almacen.png");
+        mapa.almacen = new Hotel(c3,cantidad,"../images/almacen.png");
         
-        Avion avion = new Avion("../images/airplane.png");
+        Avion avion = new Avion("../images/airplane.png",c1);
+        avion.addObserver(mapa.almacen);
+        
         
         mapa.addTransporte(avion);
         

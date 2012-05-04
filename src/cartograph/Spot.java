@@ -8,29 +8,43 @@ package cartograph;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author hui
  */
-public class Spot {
+public class Spot implements Observer {
 
-    private int x;
-    private int y;
+    private Cruce location;
     private int cantidad;
     private String image;
 
-    public Spot(int x, int y, int c, String image) {
-        this.x = x;
-        this.y = y;
-        this.cantidad = c;
+    public Spot(Cruce c, int cantidad, String image) {
+        this.location = c;
+        this.cantidad = cantidad;
         this.image = image;
     }
 
     public void paint(Graphics g) {
         ImageIcon im = new ImageIcon(this.getClass().getResource(image));
-        ((Graphics2D) g).drawImage(im.getImage(), x - 15, y - 15, 40, 40, null);
+        ((Graphics2D) g).drawImage(im.getImage(), this.location.getX() - 15, this.location.getY() - 15, 40, 40, null);
+    }
+
+    @Override
+    public void update(Observable o, Object o1) {
+        Transporte transporte  = (Transporte)o;
+        if (transporte.arrives(this))
+            JOptionPane.showMessageDialog(null, "Desea alojarse aqui?");
+    }
+    
+    @Override
+    public boolean equals (Object o){
+        Cruce c = (Cruce)o;
+        return c.getX() == this.location.getX() && c.getY() == this.location.getY();
     }
     
 }

@@ -7,36 +7,41 @@ package cartograph;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.Observable;
 import javax.swing.ImageIcon;
 
 /**
  *
  * @author roberto
  */
-public class Transporte {
+public class Transporte extends Observable {
     
-    private int x, y;
+    private Cruce location;
     private String image;
     
-    public Transporte (String image) {
+    public Transporte (String image, Cruce location) {
         this.image = image;
+        this.location = location;
     }
     
     public void paint(Graphics g) {
         ImageIcon im=new ImageIcon(this.getClass().getResource(this.image));
-        ((Graphics2D)g).drawImage(im.getImage(), x-15, y-15,30,30, null);
+        ((Graphics2D)g).drawImage(im.getImage(), this.location.getX()-15, this.location.getY()-15,30,30, null);
     }
     
     public void move(Cruce c) {
-        this.x = c.getX();
-        this.y = c.getY();
+        this.location = c;
     }
     
     public void drive(Mapa mapa) {
         for(final Cruce c : mapa.ruta.route) {
             this.move(c);    
             mapa.paint(mapa.getGraphics());
+            
+            // Inform observes
+            this.setChanged();
             this.paint(mapa.getGraphics());
+            this.notifyObservers(this);
             try {
                 Thread.sleep(500);
             }
@@ -44,5 +49,13 @@ public class Transporte {
                 System.out.println(e);
             }
         }
+    }
+    
+    public Cruce getLocation(){
+        return this.location;
+    }
+    
+    public boolean arrives (Spot s){
+        return s.equals(this.location);
     }
 }

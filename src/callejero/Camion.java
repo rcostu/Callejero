@@ -4,6 +4,7 @@
  */
 package callejero;
 
+import cartograph.Cruce;
 import cartograph.Transporte;
 
 /**
@@ -12,8 +13,8 @@ import cartograph.Transporte;
  */
 public class Camion extends Transporte {
     
-    public Camion (String image) {
-        super(image);
+    public Camion (String image, Cruce location) {
+        super(image, location);
     }
     
 }

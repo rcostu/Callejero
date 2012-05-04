@@ -4,6 +4,7 @@
  */
 package tourism;
 
+import cartograph.Cruce;
 import cartograph.Transporte;
 /**
  *
@@ -11,8 +12,8 @@ import cartograph.Transporte;
  */
 public class Avion extends Transporte {
     
-    public Avion (String image) {
-        super(image);
+    public Avion (String image, Cruce location) {
+        super(image, location);
     }
     
 }
