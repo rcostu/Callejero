@@ -118,11 +118,16 @@ public class Principal {
         
         mapa.ruta = new Ruta(prueba);
         
+        paqueteTuristico p3 = new paqueteTuristico(c3);
+        
         int cantidad = 50;
         mapa.almacen = new Hotel(c3,cantidad,"../images/almacen.png");
+        mapa.almacen.addObserver(p3);
+        mapa.almacen.enableSpot();
         
         Avion avion = new Avion("../images/airplane.png",c1);
         avion.addObserver(mapa.almacen);
+        avion.addObserver(p3);
         
         
         mapa.addTransporte(avion);

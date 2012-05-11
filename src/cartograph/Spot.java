@@ -17,16 +17,21 @@ import javax.swing.JOptionPane;
  *
  * @author hui
  */
-public class Spot implements Observer {
+public class Spot extends Observable implements Observer{
 
     private Cruce location;
     private int cantidad;
     private String image;
-
+    
     public Spot(Cruce c, int cantidad, String image) {
         this.location = c;
         this.cantidad = cantidad;
-        this.image = image;
+        this.image = image;       
+    }
+    
+    public void enableSpot() {
+        this.setChanged();
+        this.notifyObservers(this);
     }
 
     public void paint(Graphics g) {
@@ -34,17 +39,13 @@ public class Spot implements Observer {
         ((Graphics2D) g).drawImage(im.getImage(), this.location.getX() - 15, this.location.getY() - 15, 40, 40, null);
     }
 
-    @Override
-    public void update(Observable o, Object o1) {
-        Transporte transporte  = (Transporte)o;
-        if (transporte.arrives(this))
-            JOptionPane.showMessageDialog(null, "Desea alojarse aqui?");
+    public Cruce getLocation() {
+        return this.location;
     }
     
     @Override
-    public boolean equals (Object o){
-        Cruce c = (Cruce)o;
-        return c.getX() == this.location.getX() && c.getY() == this.location.getY();
+    public void update(Observable o, Object o1) {
+        
     }
     
 }
