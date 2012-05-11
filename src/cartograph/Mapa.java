@@ -20,7 +20,7 @@ public class Mapa extends javax.swing.JFrame {
     private ArrayList<Cruce> cruces = new ArrayList<Cruce>();
     public Ruta ruta;
     public Transporte transporte;
-    public Spot almacen;
+    public ArrayList<Spot> almacen = new ArrayList<Spot>();
     private int x, y;
     private Image image = null; 
 
@@ -52,7 +52,9 @@ public class Mapa extends javax.swing.JFrame {
         // se dibuja la ruta
         this.ruta.paint(g);
         // se dibuja el almacen
-        this.almacen.paint(g);
+        for (int i = 0; i < this.almacen.size(); i++) {
+            this.almacen.get(i).paint(g);
+        }
         // se dibuja el camion
         this.transporte.paint(g);
         

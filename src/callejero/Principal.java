@@ -114,7 +114,7 @@ public class Principal {
         mapa.ruta = new Ruta(prueba);
         
         int cantidad = 50;
-        mapa.almacen = new Almacen(c1,cantidad,"../images/almacen.png");
+        mapa.almacen.add(new Almacen(c1,cantidad,"../images/almacen.png"));
         
         Camion camion = new Camion("../images/camion.png", c1);
         

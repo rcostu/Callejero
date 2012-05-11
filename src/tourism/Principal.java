@@ -121,12 +121,17 @@ public class Principal {
         paqueteTuristico p3 = new paqueteTuristico(c3);
         
         int cantidad = 50;
-        mapa.almacen = new Hotel(c3,cantidad,"../images/almacen.png");
-        mapa.almacen.addObserver(p3);
-        mapa.almacen.enableSpot();
+        Hotel h = new Hotel(c3,cantidad,"../images/almacen.png");
+        h.addObserver(p3);
+        h.enableSpot();
+        mapa.almacen.add(h);
+        
+        h = new Hotel(c3,cantidad,"../images/almacen.png");
+        h.addObserver(p3);
+        h.enableSpot();
+        mapa.almacen.add(h);
         
         Avion avion = new Avion("../images/airplane.png",c1);
-        avion.addObserver(mapa.almacen);
         avion.addObserver(p3);
         
         
