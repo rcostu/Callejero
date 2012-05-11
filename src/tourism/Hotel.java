@@ -4,6 +4,7 @@
  */
 package tourism;
 
+import cartograph.Cruce;
 import cartograph.Spot;
 /**
  *
@@ -11,8 +12,8 @@ import cartograph.Spot;
  */
 public class Hotel extends Spot {
     
-    public Hotel  (int x, int y, int c, String image) {
-        super(x,y,c,image);
+    public Hotel  (Cruce cruce, int cantidad, String image) {
+        super(cruce, cantidad, image);
     }
     
 }

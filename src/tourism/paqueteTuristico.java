@@ -10,4 +10,6 @@ package tourism;
  */
 public class paqueteTuristico {
     
+    
+    
 }

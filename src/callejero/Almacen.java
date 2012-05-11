@@ -4,6 +4,7 @@
  */
 package callejero;
 
+import cartograph.Cruce;
 import cartograph.Spot;
 
 /**
@@ -12,8 +13,8 @@ import cartograph.Spot;
  */
 public class Almacen extends Spot{
     
-    public Almacen(int x, int y, int c, String image) {
-     super(x,y,c,image);
+    public Almacen(Cruce cruce, int cantidad, String image) {
+     super(cruce, cantidad, image);
     }
     
 }

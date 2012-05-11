@@ -22,12 +22,17 @@ public class Mapa extends javax.swing.JFrame {
     public Transporte transporte;
     public Spot almacen;
     private int x, y;
-    private Image image = new ImageIcon("../images/europe.png").getImage();
+    private Image image = null; 
 
     public Mapa() {
         super("Callejero");
         setSize(900, 900);
         setVisible(true);
+    }
+    
+    public Mapa(String background) {
+        this();
+        this.image = new ImageIcon(background).getImage();
     }
 
     @Override
@@ -35,9 +40,10 @@ public class Mapa extends javax.swing.JFrame {
         super.paint(g);
         
         Dimension tamanio = getSize();
-        ImageIcon imagenFondo = new ImageIcon(getClass().getResource("../images/europe.png"));        
-        g.drawImage(imagenFondo.getImage(),0,0,tamanio.width, tamanio.height, null);        
-        
+        if (this.image!=null){
+            ImageIcon imagenFondo = new ImageIcon(getClass().getResource("../images/europe.png"));        
+            g.drawImage(imagenFondo.getImage(),0,0,tamanio.width, tamanio.height, null);        
+        }
         for (final Cruce c : cruces) {
             c.paint(g);
             c.drawCruce(g);

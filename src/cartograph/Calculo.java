@@ -30,7 +30,7 @@ public class Calculo {
         
         for(int i=0;i<neighbors.size() && !resultado.contains(fin);i++){
             tmp = recursiveSearch(neighbors.get(i), fin);
-            System.out.println(i+" "+tmp);
+            // System.out.println(i+" "+tmp);
             if (tmp!=null && tmp.contains(fin) && neighbors.get(i)!=fin)
                 resultado.add(0,neighbors.get(i));   
         }
@@ -43,7 +43,7 @@ public class Calculo {
         if (!resultado.contains(fin)) {
             return null;
         }
-        System.out.println(resultado);
+        // System.out.println(resultado);
         return resultado;
     }
 
