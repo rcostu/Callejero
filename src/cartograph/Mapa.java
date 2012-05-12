@@ -100,6 +100,8 @@ public class Mapa extends javax.swing.JFrame {
     private void initComponents() {
 
         setBackground(null);
+        setMaximumSize(new java.awt.Dimension(900, 900));
+        setMinimumSize(new java.awt.Dimension(900, 900));
         setPreferredSize(new java.awt.Dimension(900, 900));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -107,8 +109,8 @@ public class Mapa extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 900, Short.MAX_VALUE)
