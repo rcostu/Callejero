@@ -1,0 +1,43 @@
+
+	Cristián:
+
+	* Introducción:
+
+	* Cuál es el proyecto: un callejero que haga el cálculo de rutas de un punto a 
+			       otro en una ciudad.
+
+	* Ejecución Callejero
+
+	* Etapa 1: comentar que es un diseño complejo que viene dado por los 
+	           conocimientos previos. Díficil de entender y hay bastantes dependecias, 
+		    con lo cual la cohesión del diseño es cuestionable e introduce una 
+		    complejidad muy alta para la primera etapa. 
+
+		    Ironizar sobre la utilización de este diseño para la aplicación 
+		    resultante.
+
+	* Etapa 2: destacar la sencillez, la falta acoplamiento entre módulos y en
+		    especial de la interfaz al negocio de la aplicación y de la función de 
+		    cálculo con las rutas y los cruces. Los objetos se pintan por sí mismo.
+
+	Hui:
+
+	* Etapa 3: se amplía el diseño con algunos conceptos que ponen de presencia un camión y
+		    almacenes orientado a dar a la aplicación la capacidad de gestionar y distribución
+		    de stock.
+
+	* Ejecución Tourism
+	
+	Vila:
+
+	* Etapa 4: hay un profundo cambio en el negocio, se desecha la gestión y distribución de stock para pasar 
+		    a un cambio "inesperado" y gestionar paquetes turísticos. Se generalizan los almacenes para 
+		    tener hoteles con funcionalidad distintas, ocurre lo mismo para el camión para incluir aviones.
+	Cristián:
+
+	* Etapa 5: se desecha la sección del pasajero por considerarse ajena a la infraestructura del programa.
+		    Lo más importante es la implementación del patrón suscriptor-observador entre 
+		    Spots (suscriptor) y los Paquete Turístico (observador).
+
+
+	* Nota Adicional: parte de nuestro de diseño se ha reutilizado en otros proyectos
