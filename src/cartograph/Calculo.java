@@ -39,7 +39,6 @@ public class Calculo {
     
     public ArrayList<Cruce> search(Cruce inicio, Cruce fin){
         recursiveSearch(inicio, fin);
-        resultado.add(0,inicio);
         if (!resultado.contains(fin)) {
             return null;
         }

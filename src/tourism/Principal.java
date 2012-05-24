@@ -118,11 +118,57 @@ public class Principal {
         
         mapa.ruta = new Ruta(prueba);
         
+        paqueteTuristico p3 = new paqueteTuristico(c3);
+        paqueteTuristico p4 = new paqueteTuristico(c4);
+        paqueteTuristico p5 = new paqueteTuristico(c5);
+        paqueteTuristico p10 = new paqueteTuristico(c10);
+        
         int cantidad = 50;
-        mapa.almacen = new Hotel(c3,cantidad,"../images/almacen.png");
+        Hotel h = new Hotel(c3,cantidad,"../images/almacen.png");
+        h.addObserver(p3);
+        h.enableSpot();
+        mapa.almacen.add(h);
+        
+        h = new Hotel(c3,cantidad,"../images/almacen.png");
+        h.addObserver(p3);
+        h.enableSpot();
+        mapa.almacen.add(h);
+        
+        h = new Hotel(c4,cantidad,"../images/almacen.png");
+        h.addObserver(p4);
+        h.enableSpot();
+        mapa.almacen.add(h);
+        
+        h = new Hotel(c4,cantidad,"../images/almacen.png");
+        h.addObserver(p4);
+        h.enableSpot();
+        mapa.almacen.add(h);
+        
+        h = new Hotel(c4,cantidad,"../images/almacen.png");
+        h.addObserver(p4);
+        h.enableSpot();
+        mapa.almacen.add(h);
+        
+        h = new Hotel(c5,cantidad,"../images/almacen.png");
+        h.addObserver(p5);
+        h.enableSpot();
+        mapa.almacen.add(h);
+        
+        h = new Hotel(c10,cantidad,"../images/almacen.png");
+        h.addObserver(p10);
+        h.enableSpot();
+        mapa.almacen.add(h);
+        
+        h = new Hotel(c10,cantidad,"../images/almacen.png");
+        h.addObserver(p10);
+        h.enableSpot();
+        mapa.almacen.add(h);
         
         Avion avion = new Avion("../images/airplane.png",c1);
-        avion.addObserver(mapa.almacen);
+        avion.addObserver(p3);
+        avion.addObserver(p4);
+        avion.addObserver(p5);
+        avion.addObserver(p10);
         
         
         mapa.addTransporte(avion);

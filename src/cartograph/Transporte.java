@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.Observable;
 import javax.swing.ImageIcon;
+import tourism.paqueteTuristico;
 
 /**
  *
@@ -55,7 +56,7 @@ public class Transporte extends Observable {
         return this.location;
     }
     
-    public boolean arrives (Spot s){
+    public boolean arrives (Cruce s){
         return s.equals(this.location);
     }
 }
